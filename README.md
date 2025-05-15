@@ -33,4 +33,12 @@ pip install -r requirements.txt
  - Create a Service Account and download the credentials.json file
  - Create a Google Sheet with columns : Timestamp | Mood | Note
  - Share the sheet with your service account
+ - Replace credentials and sheet_name in mood.py with your respective values
+
+
+### 3. Run the app
+```bash
+streamlit run mood_tracker.py
+```
+
 

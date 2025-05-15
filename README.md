@@ -12,11 +12,11 @@ Built with **Streamlit**, it connects to **Google Sheets** for data storage and 
 - Add optional notes (e.g., "Lots of Rx delays today")
 - View mood trends for **today** or filter by any **past date**
 - Auto-refreshing bar charts powered by Plotly
-- ☁Google Sheets integration for real-time cloud logging
+- Google Sheets integration for real-time cloud logging
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repo and install requirements
 

@@ -23,14 +23,26 @@ def append_entry(mood, note):
 def load_data():
     sheet = get_sheet()
     records = sheet.get_all_records()
+    if not records:
+        return pd.DataFrame() 
+
     df = pd.DataFrame(records)
-    if not df.empty:
-        df['Timestamp'] = pd.to_datetime(df['Timestamp'])
-        df['Date'] = df['Timestamp'].dt.date
-        df['Mood'] = df['Mood'].str.strip().str.replace('\ufe0f', '', regex=True)  # Normalize emojis
+    expected_columns = {'Timestamp', 'Mood', 'Note'}  
+    if not expected_columns.issubset(df.columns):
+        st.warning("Expected columns are missing from the sheet.")
+        return pd.DataFrame()
+
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'], errors='coerce')
+    df.dropna(subset=['Timestamp'], inplace=True)
+    df['Date'] = df['Timestamp'].dt.date
+    df['Mood'] = df['Mood'].astype(str).str.strip().str.replace('\ufe0f', '', regex=True)
     return df
 
 def plot_mood_chart(df, date, title):
+    if df.empty or 'Date' not in df.columns or 'Mood' not in df.columns:
+        st.info("No data available to plot.")
+        return
+
     df_filtered = df[df['Date'] == date]
     if not df_filtered.empty:
         mood_counts = df_filtered['Mood'].value_counts().reset_index()

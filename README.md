@@ -18,8 +18,13 @@ Built with **Streamlit**, it connects to **Google Sheets** for data storage and 
 
 ## 🚀 Getting Started
 
-### 1. Clone the repo
+### 1. Clone the repo and install requirements
 
 ```bash
 git clone https://github.com/your-username/mood-tracker.git
 cd mood-tracker
+pip install -r requirements.txt
+
+### 2. Google Sheets set-up
+
+ - https://console.cloud.google.com/welcome?inv=1&invt=AbxfdA&project=mochiproj

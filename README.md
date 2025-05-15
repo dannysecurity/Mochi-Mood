@@ -24,7 +24,13 @@ Built with **Streamlit**, it connects to **Google Sheets** for data storage and 
 git clone https://github.com/your-username/mood-tracker.git
 cd mood-tracker
 pip install -r requirements.txt
+```
 
 ### 2. Google Sheets set-up
 
- - https://console.cloud.google.com/welcome?inv=1&invt=AbxfdA&project=mochiproj
+ - Go to Google Cloud Console
+ - Create a project and enable Google Sheets API and Google Drive API
+ - Create a Service Account and download the credentials.json file
+ - Create a Google Sheet with columns : Timestamp | Mood | Note
+ - Share the sheet with your service account
+

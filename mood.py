@@ -53,7 +53,13 @@ def plot_mood_chart(df, date, title):
         st.info(f"No moods logged on {date}.")
 
 st.set_page_config(page_title="Mood Tracker", page_icon="🧠", layout="centered")
-st.experimental_rerun_interval = 30
+# Automatically refresh the dashboard every 30 seconds
+try:
+    from streamlit_autorefresh import st_autorefresh
+    st_autorefresh(interval=30 * 1000, key="auto_refresh")
+except Exception:
+    # If the autorefresh helper isn't available, continue without it
+    pass
 st.title("🧠 Mood of the Queue")
 
 st.subheader("Log a Mood")
